@@ -1,0 +1,6 @@
+# Microsoft Developer Studio Generated Dependency File, included by avi.mak
+
+.\avi.cpp : \
+	"d:\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	"d:\program files\microsoft visual studio\vc98\include\export.h"\
+	

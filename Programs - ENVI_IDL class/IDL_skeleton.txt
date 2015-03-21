@@ -1,0 +1,87 @@
+;Jay William Johnson
+;L46997017
+
+
+
+pro ;prog_name
+
+   ;RESTORE THE CORE FILE AND START ENVI IN BATCH
+   envi, /restore_base_save_files
+   envi_batch_init, log_file ='batch.log'
+   
+   ;SET DIRECTORY OF DATA AND TEST FOR EXISTENCE OF FILES
+   fileDir = dialog_pickfile(/directory, title='Select the location of data files')
+   if file_test(fileDir + 'CR1000_ms700.dat') eq 0 then begin
+      print, 'CR1000_ms700.dat not found'
+      envi_batch_exit
+   endif
+   if file_test(fileDir + 'CR1000_ms700_template') eq 0 then begin
+      print, 'CR1000_ms700_template not found'
+      envi_batch_exit
+   endif
+   
+
+;READ DATA FILE
+   ;USE SAVED TEMPLATE TO READ IN DATA.  TEMPLATE WAS SAVED AS MyTemplate
+   restore, fileDir + 'CR1000_ms700_template',/verbose
+   Data = read_ascii( fileDir + 'CR1000_ms700.dat', template = MyTemplate)
+
+
+
+  
+   ;PLOTTING
+   window, 0, title = 'Title'
+   plot, x, y, title = 'Plot Title', xtitle = 'x title', ytitle = 'y title'
+
+
+
+   ;exit envi
+   envi_batch_exit
+
+end;pro
+
+
+
+
+;;;IF
+   if condition then statement else statement
+   ;or
+   if condition then begin
+      statements
+   endif else begin
+      statements
+   endelse
+   
+;;;FOR
+   for i = 0, limit, step do statement
+   ;or
+   for i = 0, limit, step do begin
+      statements
+   endfor
+   
+;;;WHILE
+   while condition do statement
+   ;or
+   while condition do begin
+      statements
+   endwhile
+   
+;;;REPEAT (a.k.a. DO-WHILE)
+   repeat statement until condition
+   ;or
+   repeat begin
+      statements
+   endrep until condition
+   
+;;;CASE
+   case value of
+      value1:   statement
+      value2:   statement
+      value3:   begin
+                  statements
+                end
+      else:   statement
+   endcase
+   
+;;;GOTO
+   

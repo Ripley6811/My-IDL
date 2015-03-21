@@ -1,0 +1,11 @@
+LIBRARY		avi
+
+DESCRIPTION	'AVI access from IDL'
+
+EXPORTS		avi_openr
+		avi_get
+		avi_closer
+		avi_openw
+		avi_put
+		avi_closew
+						
